@@ -147,25 +147,27 @@ require_once __DIR__ . '/includes/header.php';
     <p class="sec-desc">Alanya'da her türlü tadilat ve tamirat ihtiyacınız için uzman ekibimizle yanınızdayız.</p>
     <div class="services-list">
       <?php foreach ($services as $s): ?>
-      <a href="/hizmetler/<?= h($s['slug']) ?>" class="service-card">
+      <a href="/hizmetler/<?= h($s['slug']) ?>" class="service-card" style="flex-direction:column;padding:0">
         <?php if ($s['image']): ?>
-        <div style="width:80px;height:80px;flex-shrink:0;overflow:hidden;border-radius:var(--r)">
-          <img src="<?= h($s['image']) ?>" alt="<?= h($s['title']) ?>" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+        <div style="width:100%;height:160px;overflow:hidden;border-radius:var(--r2) var(--r2) 0 0;flex-shrink:0">
+          <img src="<?= h($s['image']) ?>" alt="<?= h($s['title']) ?>" style="width:100%;height:100%;object-fit:cover;transition:transform .3s" loading="lazy">
         </div>
         <?php endif; ?>
-        <div class="service-card-accent"></div>
-        <div class="service-card-body">
-          <h3><?= h($s['title']) ?></h3>
-          <p><?= h($s['short_desc']) ?></p>
-          <?php if ($s['features']): ?>
-          <div class="service-tags">
-            <?php foreach (explode(',', $s['features']) as $f): ?>
-            <span class="stag"><?= h(trim($f)) ?></span>
-            <?php endforeach; ?>
+        <div style="display:flex;align-items:stretch;flex:1;width:100%">
+          <div class="service-card-accent" style="border-radius:0 0 0 var(--r2)"></div>
+          <div class="service-card-body" style="padding:16px">
+            <h3><?= h($s['title']) ?></h3>
+            <p><?= h($s['short_desc']) ?></p>
+            <?php if ($s['features']): ?>
+            <div class="service-tags">
+              <?php foreach (explode(',', $s['features']) as $f): ?>
+              <span class="stag"><?= h(trim($f)) ?></span>
+              <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
           </div>
-          <?php endif; ?>
+          <div class="service-card-arrow">›</div>
         </div>
-        <div class="service-card-arrow">›</div>
       </a>
       <?php endforeach; ?>
     </div>
