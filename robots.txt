@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /config.php
+Disallow: /install.php
+
+Sitemap: https://test.tadilatalanya.com/sitemap.php
